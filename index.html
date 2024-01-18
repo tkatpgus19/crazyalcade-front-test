@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="main.css" rel="stylesheet">
+  <title>크레이지 알케이드 아이템 테스트</title>
+</head>
+<body>
+  <h1>웹 IDE 테스트</h1>
+  <h3 style="margin-bottom: 5px;">ace.js를 사용한 웹 IDE</h3>
+  <a href="https://ace.c9.io/#nav=howto" target="_blank">ace.js 레퍼런스 페이지(클릭)</a>
+  
+  <div class="editor-container">
+    <div id="editor">
+    </div>
+    <div class="editor-btn">
+      <button id="sizeDown-btn">폰트 줄이기</button>
+      <button id="sizeUp-btn">폰트 키우기</button>
+    </div>
+  </div>
+  <div class="muk" style="position: absolute; top: -10px;" ><img src="muk.png" width="30%"></div>
+  <div class="muk" style="position: absolute; top: 160px; right: 10px;"><img src="muk.png" width="10%"></div>
+
+  
+  <h1 style="margin-top: 300px;">아이템 테스트</h1>
+  <div class="item-container">
+    <div id="wa" class="item"><img src="water.png" width="85%"></div>
+    <div id="oc" class="item"><img src="octopus.png" width="90%" style="margin-top: 5px;"></div>
+    <div id="ch" class="item"><img src="chicken.png" width="90%" style="margin-top: 5px;"></div>
+    <div id="ma" class="item"><img src="magic.png" width="90%" style="margin-top: 5px;"></div>
+    <div id="sh" class="item"><img src="shield.png" width="90%" style="margin-top: 5px;"></div>
+  </div>
+
+  <!-- ace.js 임포트 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/ace.js" integrity="sha512-czfWedq9cnMibaqVP2Sw5Aw1PTTabHxMuTOkYkL15cbCYiatPIbxdV0zwhfBZKNODg0zFqmbz8f7rKmd6tfR/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    var editor = ace.edit("editor");
+    var fontSize = 12;
+    editor.setValue("import java.util.*;\nimport java.io.*;\n\npublic class Solution {\n\tpublic static void main(String[] args){\n\t\t\n\t}\n}", -1)
+    editor.setTheme("ace/theme/dracula");
+    editor.session.setMode("ace/mode/java");
+    editor.setOptions({ maxLines: 1000 });
+    editor.setFontSize(fontSize)
+        
+    document.querySelector("#sizeUp-btn").addEventListener('click', ()=>{
+      fontSize+=2;
+      editor.setFontSize(fontSize+"px");
+    })
+        document.querySelector("#sizeDown-btn").addEventListener('click', ()=>{
+      fontSize-=2;
+      editor.setFontSize(fontSize+"px");
+    })
+
+    let edit = document.querySelector(".editor-container")
+    let muk = document.querySelectorAll(".muk")
+
+    let water = document.querySelector("#wa")
+    let octopus = document.querySelector("#oc")
+    let chicken = document.querySelector("#ch")
+    let magic = document.querySelector("#ma")
+    let shield = document.querySelector("#sh")
+
+    octopus.addEventListener("click", ()=>{
+      muk.forEach((item)=>{
+        item.classList.add("muk-anim")
+      })
+    })
+    magic.addEventListener("click", ()=>{
+      edit.classList.add("magic")
+    })
+    shield.addEventListener("click", ()=>{
+      edit.classList.remove("magic")
+      muk.forEach((item)=>{
+        item.classList.remove("muk-anim")
+      })
+    })
+    </script>
+</body>
+</html>

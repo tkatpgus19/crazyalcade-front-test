@@ -1,0 +1,83 @@
+*{ 
+  cursor: url(cursorA.jpg), auto;
+}
+*:active{
+  cursor: url(cursorB.jpg), auto;
+}
+body{
+  box-sizing: border-box;
+  color: white;
+  background-color: rgb(65, 65, 65);
+  text-align: center;
+}
+div{
+  box-sizing: border-box;
+}
+
+a{
+  color: white;
+}
+
+.editor-container{
+  position: relative;
+  width: 50%;
+  max-width: 700px;
+  margin: 50px auto;
+}
+
+.editor-btn{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.item-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item{
+  width: 100px; 
+  height: 100px;
+  border: 3px solid lightgray;
+  transition: 0.5s all;
+}
+.item:hover{
+  border: 3px solid red;
+  transition: 0.5s all;
+}
+
+.magic{
+  animation: magic1 5s none infinite;
+}
+
+.muk{
+  display: none;
+}
+
+.muk-anim{
+  display: block;
+  animation: octopus 1s none;
+}
+
+@keyframes magic1 {
+  0%{
+    transform: rotate(0deg) scale(1.0);
+  }
+  50%{
+    transform: rotate(180deg) scale(2.0);
+  }
+  100%{
+    transform: rotate(360deg) scale(1.0);
+  }
+}
+
+@keyframes octopus {
+  from{
+    transform: scale(0.0);
+  }
+  to{
+    transform: scale(1.0);
+  }
+}
